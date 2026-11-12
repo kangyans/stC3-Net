@@ -6,16 +6,16 @@ MRI"** (Yan K, Dou Q, Wang Z, Diao J, Feng X, Meyer CH, Mugler JP III;
 submitted to the *Journal of Cardiovascular Magnetic Resonance*).
 
 stC³-Net is an unrolled reconstruction network for undersampled multi-coil
-cine MRI. Each of its eight cascades applies
+cine MRI (5,962,616 trainable parameters).
 
-1. a SPIRiT update with a kernel calibrated in closed form on each scan,
-2. a complex-valued (2+1)D k-space network at full k-space resolution,
-3. a gradient data-consistency step,
-4. a complex-valued (2+1)D image U-Net, and
-5. a second data-consistency step;
+![stC³-Net architecture](docs/stc3_architecture.png)
 
-the output is the root-sum-of-squares of the data-consistent multi-coil
-k-space (5,962,616 trainable parameters).
+*(A) Overview: coil maps and a per-scan SPIRiT kernel are estimated from the
+time-averaged undersampled k-space, eight cascades are applied, and the
+output is the root-sum-of-squares of the data-consistent multi-coil k-space.
+Each cascade applies a SPIRiT update, a complex-valued (2+1)D k-space network,
+data consistency, a complex-valued (2+1)D image U-Net and a second data
+consistency step. (B) k-space network. (C) Image U-Net. (D) U-Net block.*
 
 ## Contents
 
@@ -30,6 +30,7 @@ k-space (5,962,616 trainable parameters).
 | `src/eval_vista.py` | test-set evaluation (SSIM, PSNR, NMSE per frame) |
 | `configs/` | the training arguments of stC³-Net and of its ablation variants |
 | `masks/vista/` | cached VISTA patterns (regenerated automatically if missing) |
+| `docs/` | architecture figure |
 | `scripts/` | data download, model loading (`preview_recon.py`) and LV-volume analysis with nnU-Net |
 
 ## Installation
