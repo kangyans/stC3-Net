@@ -1,0 +1,12 @@
+torch>=2.1
+torchvision
+numpy<2
+h5py
+scikit-image
+sigpy
+tensorboard
+synapseclient>=4.0,<5  # syn.get() is removed in 5.0
+# Optional: LV-volume analysis (scripts/nnunet_*.py); nnU-Net v1 (Task027_ACDC)
+# and SimpleITK are best installed in a separate environment
+pandas
+scipy

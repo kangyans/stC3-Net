@@ -1,0 +1,3 @@
+# stC3-Net as in the paper (arguments for src/train.py, in addition to
+# --trn_dir, --val_dir, --out_dir and --use_gpu).
+--exp_name vista_dc_e40_stC3 --stc3 --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40

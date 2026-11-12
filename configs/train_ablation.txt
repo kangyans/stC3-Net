@@ -1,0 +1,9 @@
+# Ablation variants of stC3 (one run per line; arguments for src/train.py).
+# noSPIRiT: no SPIRiT kernel; noKspace: no k-space step; realUNet: real-valued
+# image U-Nets (width 23); noTemporal: temporal kernels of size 1 (17 filters);
+# C3like: no SPIRiT kernel and no temporal convolutions (17 filters).
+--exp_name abl_e40_noSPIRiT --stc3 --knet_domain coil --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40
+--exp_name abl_e40_noKspace --stc3 --knet_domain none --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40
+--exp_name abl_e40_realUNet --stc3 --inet_real --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40
+--exp_name abl_e40_noTemporal --stc3 --temporal_kernel 1 --knet_t_kernel 1 --num_filters 17 --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40
+--exp_name abl_e40_C3like --stc3 --knet_domain coil --temporal_kernel 1 --knet_t_kernel 1 --num_filters 17 --mask vista_dc --train_R 4 6 8 10 12 16 --val_R 4 6 8 10 12 16 --grad_checkpoint --learning_rate 1e-3 --scheduler cosine --num_epochs 40
